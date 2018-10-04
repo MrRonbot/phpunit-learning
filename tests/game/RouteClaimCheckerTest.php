@@ -25,7 +25,7 @@ final class RouteClaimCheckerTest extends TestCase
             $routeLength
         );
 
-        $this->assertSame($expected, $this->checker->canClaimRoute($route, $cards));
+        $this->assertEquals($expected, $this->checker->canClaimRoute($route, $cards));
     }
 
     public function routeClaimabilityProvider()

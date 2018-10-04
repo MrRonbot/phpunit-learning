@@ -10,66 +10,26 @@ use PHPUnit\Framework\TestCase;
  */
 final class CardTest extends TestCase
 {
-    public function testCanBePurple(): void
+    /**
+     * @dataProvider colorsProvider
+     */
+    public function testCardCanHaveColor(Card $card, Color $expected)
     {
-        $card = Card::purple();
-
-        $this->assertTrue($card->color()->equalTo(Color::purple()));
+        $this->assertEquals($expected, $card->color());
     }
 
-    public function testCanBeWhite(): void
+    public function colorsProvider()
     {
-        $card = Card::white();
-
-        $this->assertTrue($card->color()->equalTo(Color::white()));
-    }
-
-    public function testCanBeBlue(): void
-    {
-        $card = Card::blue();
-
-        $this->assertTrue($card->color()->equalTo(Color::blue()));
-    }
-
-    public function testCanBeYellow(): void
-    {
-        $card = Card::yellow();
-
-        $this->assertTrue($card->color()->equalTo(Color::yellow()));
-    }
-
-    public function testCanBeOrange(): void
-    {
-        $card = Card::orange();
-
-        $this->assertTrue($card->color()->equalTo(Color::orange()));
-    }
-
-    public function testCanBeBlack(): void
-    {
-        $card = Card::black();
-
-        $this->assertTrue($card->color()->equalTo(Color::black()));
-    }
-
-    public function testCanBeRed(): void
-    {
-        $card = Card::red();
-
-        $this->assertTrue($card->color()->equalTo(Color::red()));
-    }
-
-    public function testCanBeGreen(): void
-    {
-        $card = Card::green();
-
-        $this->assertTrue($card->color()->equalTo(Color::green()));
-    }
-
-    public function testCanBeLocomotive(): void
-    {
-        $card = Card::locomotive();
-
-        $this->assertTrue($card->color()->equalTo(Color::wildcard()));
+        return [
+            'purple'   => [Card::purple(), Color::purple()],
+            'white'    => [Card::white(), Color::white()],
+            'blue'     => [Card::blue(), Color::blue()],
+            'yellow'   => [Card::yellow(), Color::yellow()],
+            'orange'   => [Card::orange(), Color::orange()],
+            'black'    => [Card::black(), Color::black()],
+            'red'      => [Card::red(), Color::red()],
+            'green'    => [Card::green(), Color::green()],
+            'wildcard' => [Card::locomotive(), Color::wildcard()],
+        ];
     }
 }

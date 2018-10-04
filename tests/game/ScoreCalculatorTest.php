@@ -25,7 +25,7 @@ class ScoreCalculatorTest extends TestCase
             $length
         );
 
-        $this->assertSame($expected, $this->calculator->scoreRoute($route));
+        $this->assertEquals($expected, $this->calculator->scoreRoute($route));
     }
 
     public function routeScoresProvider()

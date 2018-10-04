@@ -5,13 +5,23 @@ use PHPUnit\Framework\TestCase;
 
 final class LengthTest extends TestCase
 {
-    public function testCanBeOneUnit()
+    /**
+     * @dataProvider lengthsProvider
+     */
+    public function testLengthHasValue(Length $length, $expected)
     {
-        $this->assertEquals(1, Length::one()->asInteger());
+        $this->assertEquals($expected, $length->asInteger());
     }
 
-    public function testCanBeTwoUnits()
+    public function lengthsProvider()
     {
-        $this->assertEquals(2, Length::two()->asInteger());
+        return [
+            'length1' => [Length::one(),   1],
+            'length2' => [Length::two(),   2],
+            'length3' => [Length::three(), 3],
+            'length4' => [Length::four(),  4],
+            'length5' => [Length::five(),  5],
+            'length6' => [Length::six(),   6],
+        ];
     }
 }
